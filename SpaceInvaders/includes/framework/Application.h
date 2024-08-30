@@ -11,6 +11,11 @@ namespace si
 		void Run();
 
 	private:
-		sf::RenderWindow mWindow;
+		void Tick(float DeltaTime);
+		void Render();
+
+		sf::RenderWindow m_Window;
+		sf::Clock m_TickClock;
+		float m_TargetFrameRate;
 	};
 }
