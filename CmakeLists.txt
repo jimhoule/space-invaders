@@ -8,5 +8,17 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Creates a variable
 set(SPACE_INVADERS_GAME_TARGET_NAME SpaceInvadersGame)
+set(SFML_LIB_NAME Sfml)
 
+# Allows fetching content from remote location
+include(FetchContent)
+# Fetches contents
+FetchContent_Declare(
+    ${SFML_LIB_NAME}
+    GIT_REPOSITORY https://github.com/SFML/SFML.git
+    GIT_TAG 2.6.1 GIT_SHALLOW FALSE
+)
+FetchContent_MakeAvailable(${SFML_LIB_NAME})
+
+# Adds subdirectories
 add_subdirectory(SpaceInvaders)
