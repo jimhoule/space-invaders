@@ -1,7 +1,15 @@
 # Creates executable
-add_executable(${SPACE_INVADERS_GAME_TARGET_NAME} ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp)
+add_executable(
+	${SPACE_INVADERS_GAME_TARGET_NAME}
+	${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/includes/framework/Application.h
+	${CMAKE_CURRENT_SOURCE_DIR}/src/framework/Application.cpp
+)
 
-# Links contents
+# Links header files
+target_include_directories(${SPACE_INVADERS_GAME_TARGET_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/includes)
+
+# Links libraries
 target_link_libraries(${SPACE_INVADERS_GAME_TARGET_NAME} PUBLIC sfml-graphics)
 target_link_libraries(${SPACE_INVADERS_GAME_TARGET_NAME} PUBLIC sfml-window)
 target_link_libraries(${SPACE_INVADERS_GAME_TARGET_NAME} PUBLIC sfml-system)
