@@ -11,8 +11,10 @@ namespace si
 		void Run();
 
 	private:
-		void Tick(float DeltaTime);
-		void Render();
+		void TickInternal(float DeltaTime);
+		void RenderInternal();
+		virtual void Tick(float DeltaTime);
+		virtual void Render();
 
 		sf::RenderWindow m_Window;
 		sf::Clock m_TickClock;
