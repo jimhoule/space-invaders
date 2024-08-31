@@ -1,0 +1,27 @@
+# Creates library
+add_executable(
+	${SPACE_INVADERS_GAME_TARGET_NAME}
+	${CMAKE_CURRENT_SOURCE_DIR}/includes/gameFramework/GameApplication.h
+	${CMAKE_CURRENT_SOURCE_DIR}/src/gameFramework/GameApplication.cpp
+)
+
+# Links header files
+target_include_directories(${SPACE_INVADERS_GAME_TARGET_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/includes)
+
+# Links engine library
+target_link_libraries(${SPACE_INVADERS_GAME_TARGET_NAME} PUBLIC ${SPACE_INVADERS_ENGINE_TARGET_NAME})
+
+# Creates a function to copy a library to a target
+function(CopyLibDirToTarget LIB_NAME TARGET_NAME)
+	add_custom_command(
+		TARGET ${TARGET_NAME}
+		POST_BUILD
+		COMMAND 
+		${CMAKE_COMMAND} -E copy_directory
+		$<TARGET_FILE_DIR:${LIB_NAME}>
+		$<TARGET_FILE_DIR:${TARGET_NAME}>
+	)
+endfunction()
+
+# Copies engine library in executable directory
+CopyLibDirToTarget(${SPACE_INVADERS_ENGINE_TARGET_NAME} ${SPACE_INVADERS_GAME_TARGET_NAME})

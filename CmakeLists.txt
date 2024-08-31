@@ -6,7 +6,8 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_Cxx_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-# Creates a variable
+# Creates variables
+set(SPACE_INVADERS_ENGINE_TARGET_NAME SpaceInvadersEngine)
 set(SPACE_INVADERS_GAME_TARGET_NAME SpaceInvadersGame)
 set(SFML_LIB_NAME Sfml)
 
@@ -21,4 +22,5 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(${SFML_LIB_NAME})
 
 # Adds subdirectories
-add_subdirectory(SpaceInvaders)
+add_subdirectory(SpaceInvadersEngine)
+add_subdirectory(SpaceInvadersGame)
