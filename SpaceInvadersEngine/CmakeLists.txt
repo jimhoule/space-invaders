@@ -4,6 +4,8 @@ add_library(
 	STATIC
 	${CMAKE_CURRENT_SOURCE_DIR}/includes/framework/Application.h
 	${CMAKE_CURRENT_SOURCE_DIR}/src/framework/Application.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/includes/framework/Core.h
+	${CMAKE_CURRENT_SOURCE_DIR}/src/framework/Core.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/includes/EntryPoint.h
 	${CMAKE_CURRENT_SOURCE_DIR}/src/EntryPoint.cpp
 )

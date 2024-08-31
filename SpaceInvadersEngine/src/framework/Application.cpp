@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "framework/Application.h"
+#include "framework/Core.h"
 
 namespace si
 {
@@ -53,7 +54,7 @@ namespace si
 
 	void Application::Tick(float DeltaTime)
 	{
-		std::cout << "Ticking at " << 1.f / DeltaTime << " framerate" << std::endl;
+		LOG("Ticking at %f framerate", 1.f / DeltaTime);
 	}
 
 	void Application::Render()
