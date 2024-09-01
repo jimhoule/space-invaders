@@ -2,13 +2,15 @@
 
 #include "framework/Application.h"
 #include "framework/Core.h"
+#include "framework/World.h"
 
 namespace si
 {
 	Application::Application()
-		:m_Window{ sf::VideoMode(1024, 1440), "Space Invaders" },
-		m_TickClock{},
-		m_TargetFrameRate{ 60.f }
+		: m_Window(sf::VideoMode(1024, 1440), "Space Invaders"),
+		m_TickClock(),
+		m_TargetFrameRate(60.f),
+		m_World(nullptr)
 	{}
 
 	void Application::Run()
@@ -43,6 +45,12 @@ namespace si
 	void Application::TickInternal(float DeltaTime)
 	{
 		Tick(DeltaTime);
+
+		if (m_World == nullptr) {
+			return;
+		}
+
+		m_World->TickInternal(DeltaTime);
 	}
 
 	void Application::RenderInternal()
@@ -54,7 +62,7 @@ namespace si
 
 	void Application::Tick(float DeltaTime)
 	{
-		LOG("Ticking at %f framerate", 1.f / DeltaTime);
+		LOG("Application is ticking at %f framerate", 1.f / DeltaTime);
 	}
 
 	void Application::Render()

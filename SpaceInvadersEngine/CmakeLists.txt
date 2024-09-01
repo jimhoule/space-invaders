@@ -2,12 +2,14 @@
 add_library(
 	${SPACE_INVADERS_ENGINE_TARGET_NAME}
 	STATIC
+	${CMAKE_CURRENT_SOURCE_DIR}/includes/EntryPoint.h
+	${CMAKE_CURRENT_SOURCE_DIR}/src/EntryPoint.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/includes/framework/Application.h
 	${CMAKE_CURRENT_SOURCE_DIR}/src/framework/Application.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/includes/framework/Core.h
 	${CMAKE_CURRENT_SOURCE_DIR}/src/framework/Core.cpp
-	${CMAKE_CURRENT_SOURCE_DIR}/includes/EntryPoint.h
-	${CMAKE_CURRENT_SOURCE_DIR}/src/EntryPoint.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/includes/framework/World.h
+	${CMAKE_CURRENT_SOURCE_DIR}/src/framework/World.cpp
 )
 
 # Links header files

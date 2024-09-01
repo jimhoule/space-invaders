@@ -6,6 +6,7 @@ namespace si
 {
 	class GameApplication : public Application
 	{
-
+	public:
+		GameApplication();
 	};
 }
