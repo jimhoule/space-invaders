@@ -4,10 +4,14 @@ add_library(
 	STATIC
 	${CMAKE_CURRENT_SOURCE_DIR}/includes/EntryPoint.h
 	${CMAKE_CURRENT_SOURCE_DIR}/src/EntryPoint.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/includes/framework/Actor.h
+	${CMAKE_CURRENT_SOURCE_DIR}/src/framework/Actor.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/includes/framework/Application.h
 	${CMAKE_CURRENT_SOURCE_DIR}/src/framework/Application.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/includes/framework/Core.h
 	${CMAKE_CURRENT_SOURCE_DIR}/src/framework/Core.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/includes/framework/Object.h
+	${CMAKE_CURRENT_SOURCE_DIR}/src/framework/Object.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/includes/framework/World.h
 	${CMAKE_CURRENT_SOURCE_DIR}/src/framework/World.cpp
 )

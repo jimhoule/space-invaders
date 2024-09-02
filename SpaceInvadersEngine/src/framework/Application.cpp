@@ -44,6 +44,7 @@ namespace si
 
 	void Application::TickInternal(float DeltaTime)
 	{
+		// NOTE: Because Application is owner of World, it should tick first
 		Tick(DeltaTime);
 
 		if (m_World == nullptr) {
