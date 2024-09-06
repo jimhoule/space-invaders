@@ -1,5 +1,7 @@
 #include "gameFramework/GameApplication.h"
 
+#include "config.h"
+
 #include <framework/Actor.h>
 #include <framework/Core.h>
 #include <framework/World.h>
@@ -16,7 +18,7 @@ namespace si
 	{
 		WeakPtr<World> NewWorld = LoadWorld<World>();
 		WeakPtr<Actor> NewActor = NewWorld.lock()->SpawnActor<Actor>();
-		NewActor.lock()->SetTexture("C:/Users/jimmy.houle/Desktop/SpaceInvaders/SpaceInvadersGame/assets/SpaceShooterRedux/PNG/playerShip1_blue.png");
+		NewActor.lock()->SetTexture(GetResourceDir() + "SpaceShooterRedux/PNG/playerShip1_blue.png");
 		//NewActor.lock()->Destroy();
 	}
 }
