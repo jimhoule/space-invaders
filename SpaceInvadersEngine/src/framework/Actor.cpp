@@ -1,4 +1,6 @@
 #include "framework/Actor.h"
+
+#include "framework/AssetsManager.h"
 #include "framework/Core.h"
 #include "framework/World.h"
 
@@ -51,13 +53,17 @@ namespace si
 		LOG("Actor ticking at %f framerate", 1.f / DeltaTime);
 	}
 
-	void Actor::SetTexture(const std::string& TexturePath)
+	void Actor::SetTexture(const std::string& Path)
 	{
-		m_Texture.loadFromFile(TexturePath);
+		m_Texture = AssetsManager::Get().LoadTexture(Path);
+		if (m_Texture == nullptr)
+		{
+			return;
+		}
 
-		m_Sprite.setTexture(m_Texture);
-		int TextureWidth = m_Texture.getSize().x;
-		int TextureHeight = m_Texture.getSize().y;
+		m_Sprite.setTexture(*m_Texture);
+		int TextureWidth = m_Texture->getSize().x;
+		int TextureHeight = m_Texture->getSize().y;
 		m_Sprite.setTextureRect(sf::IntRect(sf::Vector2i(), sf::Vector2i(TextureWidth, TextureHeight)));
 	}
 

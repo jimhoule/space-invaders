@@ -19,13 +19,13 @@ namespace si
 		void TickInternal(float DeltaTime);
 		virtual void BeginPlay();
 		virtual void Tick(float DeltaTime);
-		void SetTexture(const std::string& TexturePath);
+		void SetTexture(const std::string& Path);
 		void Render(sf::RenderWindow& Window);
 
 	private:
 		World* m_OwningWorld;
 		bool m_HasBegunPlay;
 		sf::Sprite m_Sprite;
-		sf::Texture m_Texture;
+		SharedPtr<sf::Texture> m_Texture;
 	};
 }

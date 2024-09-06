@@ -8,6 +8,8 @@ add_library(
 	${CMAKE_CURRENT_SOURCE_DIR}/src/framework/Actor.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/includes/framework/Application.h
 	${CMAKE_CURRENT_SOURCE_DIR}/src/framework/Application.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/includes/framework/AssetsManager.h
+	${CMAKE_CURRENT_SOURCE_DIR}/src/framework/AssetsManager.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/includes/framework/Core.h
 	${CMAKE_CURRENT_SOURCE_DIR}/src/framework/Core.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/includes/framework/Object.h
