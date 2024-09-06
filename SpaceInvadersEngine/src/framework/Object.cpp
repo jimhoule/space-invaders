@@ -4,7 +4,7 @@
 namespace si
 {
 	Object::Object()
-		: m_IsPendingDestroy(false)
+		: m_IsDestructionPending(false)
 	{}
 
 	Object::~Object()
@@ -14,6 +14,11 @@ namespace si
 
 	void Object::Destroy()
 	{
-		m_IsPendingDestroy = true;
+		m_IsDestructionPending = true;
+	}
+
+	bool Object::IsDestructionPending() const
+	{
+		return m_IsDestructionPending;
 	}
 }

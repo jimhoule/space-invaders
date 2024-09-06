@@ -4,9 +4,16 @@
 
 namespace si
 {
-	Actor::Actor(World* OwningWorld)
-		: m_OwningWorld(OwningWorld), m_HasBegunPlay(false)
-	{}
+	Actor::Actor(World* OwningWorld, const std::string& TexturePath)
+		: m_OwningWorld(OwningWorld), m_HasBegunPlay(false), m_Sprite(), m_Texture()
+	{
+		if (TexturePath == "")
+		{
+			return;
+		}
+
+		SetTexture(TexturePath);
+	}
 
 	Actor::~Actor()
 	{
@@ -24,6 +31,16 @@ namespace si
 		BeginPlay();
 	}
 
+	void Actor::TickInternal(float DeltaTime)
+	{
+		if (IsDestructionPending())
+		{
+			return;
+		}
+
+		Tick(DeltaTime);
+	}
+
 	void Actor::BeginPlay()
 	{
 		LOG("Actor begun play");
@@ -32,5 +49,20 @@ namespace si
 	void Actor::Tick(float DeltaTime)
 	{
 		LOG("Actor ticking at %f framerate", 1.f / DeltaTime);
+	}
+
+	void Actor::SetTexture(const std::string& TexturePath)
+	{
+		m_Texture.loadFromFile(TexturePath);
+
+		m_Sprite.setTexture(m_Texture);
+		int TextureWidth = m_Texture.getSize().x;
+		int TextureHeight = m_Texture.getSize().y;
+		m_Sprite.setTextureRect(sf::IntRect(sf::Vector2i(), sf::Vector2i(TextureWidth, TextureHeight)));
+	}
+
+	void Actor::Render(sf::RenderWindow& Window)
+	{
+		Window.draw(m_Sprite);
 	}
 }

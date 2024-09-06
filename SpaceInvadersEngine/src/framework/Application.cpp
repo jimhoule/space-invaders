@@ -6,8 +6,8 @@
 
 namespace si
 {
-	Application::Application()
-		: m_Window(sf::VideoMode(1024, 1440), "Space Invaders"),
+	Application::Application(unsigned int WindowWidth, unsigned int WindowHeight, const std::string& WindowTitle, sf::Uint32 WindowStyle)
+		: m_Window(sf::VideoMode(WindowWidth, WindowHeight), WindowTitle, WindowStyle),
 		m_TickClock(),
 		m_TargetFrameRate(60.f),
 		m_World(nullptr)
@@ -68,11 +68,11 @@ namespace si
 
 	void Application::Render()
 	{
-		sf::RectangleShape rect{ sf::Vector2f{100, 100} };
-		rect.setFillColor(sf::Color::Green);
-		rect.setOrigin(50, 50);
-		rect.setPosition(m_Window.getSize().x / 2.f, m_Window.getSize().y / 2.f);
+		if (m_World == nullptr)
+		{
+			return;
+		}
 
-		m_Window.draw(rect);
+		m_World->Render(m_Window);
 	}
 }

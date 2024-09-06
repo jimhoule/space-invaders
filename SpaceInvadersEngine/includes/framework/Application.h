@@ -3,6 +3,7 @@
 #include "framework/Core.h"
 
 #include <SFML/Graphics.hpp>
+#include <string>
 
 namespace si
 {
@@ -11,7 +12,7 @@ namespace si
 	class Application
 	{
 	public:
-		Application();
+		Application(unsigned int WindowWidth, unsigned int WindowHeight, const std::string& WindowTitle, sf::Uint32 WindowStyle);
 		void Run();
 
 		template<typename TWorld>

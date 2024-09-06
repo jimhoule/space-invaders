@@ -9,9 +9,9 @@ namespace si
 		virtual ~Object();
 
 		void Destroy();
-		bool GetIsPendingDestroy() const { return m_IsPendingDestroy; }
+		bool IsDestructionPending() const;
 
 	private:
-		bool m_IsPendingDestroy;
+		bool m_IsDestructionPending;
 	};
 }

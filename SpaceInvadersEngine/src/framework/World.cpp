@@ -2,6 +2,8 @@
 #include "framework/Core.h"
 #include "framework/World.h"
 
+#include <SFML/Graphics.hpp>
+
 namespace si
 {
 	World::World(Application* OwningApp)
@@ -38,14 +40,22 @@ namespace si
 		for (List<SharedPtr<Actor>>::iterator iterator = m_Actors.begin(); iterator != m_Actors.end();)
 		{
 			// Destroys the actor if this one is waiting to be destroyed
-			if (iterator->get()->GetIsPendingDestroy())
+			if (iterator->get()->IsDestructionPending())
 			{
 				iterator = m_Actors.erase(iterator);
 				continue;
 			}
 
-			iterator->get()->Tick(DeltaTime);
+			iterator->get()->TickInternal(DeltaTime);
 			++iterator;
+		}
+	}
+
+	void World::Render(sf::RenderWindow& Window)
+	{
+		for (SharedPtr<Actor> Actor : m_Actors)
+		{
+			Actor->Render(Window);
 		}
 	}
 
