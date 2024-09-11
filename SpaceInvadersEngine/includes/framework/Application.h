@@ -26,6 +26,8 @@ namespace si
 
 		sf::RenderWindow m_Window;
 		sf::Clock m_TickClock;
+		sf::Clock m_CleanCycleClock;
+		float m_CleanCycleInterval;
 		float m_TargetFrameRate;
 		SharedPtr<World> m_World;
 	};

@@ -40,4 +40,19 @@ namespace si
 		// If texture path is not valid, returns nullptr
 		return SharedPtr<sf::Texture> {nullptr};
 	}
+
+	void AssetsManager::CleanCycle()
+	{
+		for (auto iterator = m_TexturesMap.begin(); iterator != m_TexturesMap.end();)
+		{
+			// If texture is not being used anymore (if the texture pointer in the map is the only one), deletes texture
+			if (iterator->second.unique())
+			{
+				iterator = m_TexturesMap.erase(iterator);
+				continue;
+			}
+
+			++iterator;
+		}
+	}
 }

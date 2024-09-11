@@ -1,14 +1,18 @@
-#include <iostream>
-
 #include "framework/Application.h"
+
+#include "framework/AssetsManager.h"
 #include "framework/Core.h"
 #include "framework/World.h"
+
+#include <iostream>
 
 namespace si
 {
 	Application::Application(unsigned int WindowWidth, unsigned int WindowHeight, const std::string& WindowTitle, sf::Uint32 WindowStyle)
 		: m_Window(sf::VideoMode(WindowWidth, WindowHeight), WindowTitle, WindowStyle),
 		m_TickClock(),
+		m_CleanCycleClock(),
+		m_CleanCycleInterval(2.f),
 		m_TargetFrameRate(60.f),
 		m_World(nullptr)
 	{}
@@ -47,11 +51,17 @@ namespace si
 		// NOTE: Because Application is owner of World, it should tick first
 		Tick(DeltaTime);
 
-		if (m_World == nullptr) {
-			return;
+		// Ticks world
+		if (m_World != nullptr) {
+			m_World->TickInternal(DeltaTime);
 		}
 
-		m_World->TickInternal(DeltaTime);
+		// Deletes unused assets
+		if (m_CleanCycleClock.getElapsedTime().asSeconds() >= m_CleanCycleInterval)
+		{
+			m_CleanCycleClock.restart();
+			AssetsManager::Get().CleanCycle();
+		}
 	}
 
 	void Application::RenderInternal()

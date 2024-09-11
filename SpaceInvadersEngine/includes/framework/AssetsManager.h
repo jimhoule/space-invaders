@@ -11,6 +11,7 @@ namespace si
 	public:
 		static AssetsManager& Get();
 		SharedPtr<sf::Texture> LoadTexture(const std::string& Path);
+		void CleanCycle();
 
 	protected:
 		AssetsManager();
