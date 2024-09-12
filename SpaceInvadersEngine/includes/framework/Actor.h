@@ -21,8 +21,18 @@ namespace si
 		virtual void Tick(float DeltaTime);
 		void SetTexture(const std::string& Path);
 		void Render(sf::RenderWindow& Window);
+		sf::Vector2f GetPosition() const;
+		float GetRotation() const;
+		sf::Vector2f GetForwardDirection() const;
+		sf::Vector2f GetRightDirection() const;
+		void SetPosition(const sf::Vector2f& Position);
+		void SetRotation(float Rotation);
+		void AddPositionOffset(const sf::Vector2f& Offset);
+		void AddRotationffset(float Offset);
 
 	private:
+		void CenterOrigin();
+
 		World* m_OwningWorld;
 		bool m_HasBegunPlay;
 		sf::Sprite m_Sprite;

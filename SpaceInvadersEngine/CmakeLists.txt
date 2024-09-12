@@ -12,6 +12,8 @@ add_library(
 	${CMAKE_CURRENT_SOURCE_DIR}/src/framework/AssetsManager.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/includes/framework/Core.h
 	${CMAKE_CURRENT_SOURCE_DIR}/src/framework/Core.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/includes/framework/MathUtility.h
+	${CMAKE_CURRENT_SOURCE_DIR}/src/framework/MathUtility.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/includes/framework/Object.h
 	${CMAKE_CURRENT_SOURCE_DIR}/src/framework/Object.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/includes/framework/World.h

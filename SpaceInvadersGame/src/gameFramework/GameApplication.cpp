@@ -19,6 +19,8 @@ namespace si
 		WeakPtr<World> NewWorld = LoadWorld<World>();
 		WeakPtr<Actor> NewActor = NewWorld.lock()->SpawnActor<Actor>();
 		NewActor.lock()->SetTexture(GetResourceDir() + "SpaceShooterRedux/PNG/playerShip1_blue.png");
+		NewActor.lock()->SetPosition(sf::Vector2f(300.f, 490.f));
+		NewActor.lock()->SetRotation(90.f);
 		//NewActor.lock()->Destroy();
 	}
 }
