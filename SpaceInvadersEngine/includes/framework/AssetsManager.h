@@ -12,6 +12,7 @@ namespace si
 		static AssetsManager& Get();
 		SharedPtr<sf::Texture> LoadTexture(const std::string& Path);
 		void CleanCycle();
+		void SetAssetsRootDirectory(const std::string& RootDirectory);
 
 	protected:
 		AssetsManager();
@@ -19,5 +20,6 @@ namespace si
 	private:
 		static UniquePtr<AssetsManager> m_AssetsManager;
 		Dictionary<std::string, SharedPtr<sf::Texture>> m_TexturesMap;
+		std::string m_RootDirectory;
 	};
 }

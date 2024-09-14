@@ -6,6 +6,7 @@ namespace si
 	UniquePtr<AssetsManager> AssetsManager::m_AssetsManager = nullptr;
 
 	AssetsManager::AssetsManager()
+		: m_RootDirectory()
 	{}
 
 	AssetsManager& AssetsManager::Get()
@@ -30,7 +31,7 @@ namespace si
 		SharedPtr<sf::Texture> Texture{new sf::Texture};
 
 		// If texture path is valid, inserts texture into map and returns texture
-		bool IsLoaded = Texture->loadFromFile(Path);
+		bool IsLoaded = Texture->loadFromFile(m_RootDirectory + Path);
 		if (IsLoaded)
 		{
 			m_TexturesMap.insert({Path, Texture});
@@ -54,5 +55,10 @@ namespace si
 
 			++iterator;
 		}
+	}
+
+	void AssetsManager::SetAssetsRootDirectory(const std::string& RootDirectory)
+	{
+		m_RootDirectory = RootDirectory;
 	}
 }
