@@ -12,6 +12,7 @@ namespace si {
 		float GetSpeed() const { return m_Speed; };
 	private:
 		void HandleInput();
+		void NormalizeInput();
 		void ConsumeInput(float DeltaTime);
 
 		sf::Vector2f m_MovementDirection;

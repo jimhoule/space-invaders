@@ -1,5 +1,6 @@
 #include "player/PlayerSpaceship.h"
 
+#include <framework/MathUtility.h>
 #include <SFML/System.hpp>
 
 namespace si
@@ -40,6 +41,13 @@ namespace si
 		{
 			m_MovementDirection.x = 1.f;
 		}
+
+		NormalizeInput();
+	}
+
+	void PlayerSpaceship::NormalizeInput()
+	{
+		m_MovementDirection = NormalizeVector<float>(m_MovementDirection);
 	}
 
 	void PlayerSpaceship::ConsumeInput(float DeltaTime)
