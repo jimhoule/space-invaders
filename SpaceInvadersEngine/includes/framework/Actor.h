@@ -25,6 +25,7 @@ namespace si
 		float GetRotation() const;
 		sf::Vector2f GetForwardDirection() const;
 		sf::Vector2f GetRightDirection() const;
+		sf::Vector2u GetWindowSize() const;
 		void SetPosition(const sf::Vector2f& Position);
 		void SetRotation(float Rotation);
 		void AddPositionOffset(const sf::Vector2f& Offset);

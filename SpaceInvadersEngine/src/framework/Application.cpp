@@ -46,6 +46,11 @@ namespace si
 		}
 	}
 
+	sf::Vector2u Application::GetWindowSize() const
+	{
+		return m_Window.getSize();
+	}
+
 	void Application::TickInternal(float DeltaTime)
 	{
 		// NOTE: Because Application is owner of World, it should tick first

@@ -16,6 +16,7 @@ namespace si
 		void BeginPlayInternal();
 		void TickInternal(float DeltaTime);
 		void Render(sf::RenderWindow& Window);
+		sf::Vector2u GetWindowSize() const;
 
 		template<typename TActor>
 		WeakPtr<TActor> SpawnActor();

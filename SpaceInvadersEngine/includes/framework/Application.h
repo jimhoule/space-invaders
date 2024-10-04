@@ -13,7 +13,9 @@ namespace si
 	{
 	public:
 		Application(unsigned int WindowWidth, unsigned int WindowHeight, const std::string& WindowTitle, sf::Uint32 WindowStyle);
+
 		void Run();
+		sf::Vector2u GetWindowSize() const;
 
 		template<typename TWorld>
 		WeakPtr<TWorld> LoadWorld();

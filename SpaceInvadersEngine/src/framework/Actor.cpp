@@ -95,6 +95,11 @@ namespace si
 		return ConvertRotationToVector(GetRotation() + 90.f);
 	}
 
+	sf::Vector2u Actor::GetWindowSize() const
+	{
+		return m_OwningWorld->GetWindowSize();
+	}
+
 	void Actor::SetPosition(const sf::Vector2f& Position)
 	{
 		m_Sprite.setPosition(Position);

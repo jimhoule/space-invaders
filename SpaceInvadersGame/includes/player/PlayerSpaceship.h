@@ -13,6 +13,7 @@ namespace si {
 	private:
 		void HandleInput();
 		void NormalizeInput();
+		void ClampInput();
 		void ConsumeInput(float DeltaTime);
 
 		sf::Vector2f m_MovementDirection;

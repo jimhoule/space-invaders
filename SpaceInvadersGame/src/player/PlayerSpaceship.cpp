@@ -42,12 +42,45 @@ namespace si
 			m_MovementDirection.x = 1.f;
 		}
 
+		ClampInput();
 		NormalizeInput();
 	}
 
 	void PlayerSpaceship::NormalizeInput()
 	{
 		m_MovementDirection = NormalizeVector<float>(m_MovementDirection);
+	}
+
+	// NOTE: Clamps input on the edge of the window
+	void PlayerSpaceship::ClampInput()
+	{
+		// NOTE: GetPosition() and GetWindowSize() come from the Actor class
+		sf::Vector2f Position = GetPosition();
+		sf::Vector2u WindowSize = GetWindowSize();
+
+		// Clamps left
+		if (Position.x < 0.f && m_MovementDirection.x == -1.f)
+		{
+			m_MovementDirection.x = 0.f;
+		}
+
+		// Clamps right
+		if (Position.x > WindowSize.x && m_MovementDirection.x == 1.f)
+		{
+			m_MovementDirection.x = 0.f;
+		}
+
+		// Clamps top
+		if (Position.y < 0.f && m_MovementDirection.y == -1.f)
+		{
+			m_MovementDirection.y = 0.f;
+		}
+
+		// Clamps bottom
+		if (Position.y > WindowSize.y && m_MovementDirection.y == 1.f)
+		{
+			m_MovementDirection.y = 0.f;
+		}
 	}
 
 	void PlayerSpaceship::ConsumeInput(float DeltaTime)
